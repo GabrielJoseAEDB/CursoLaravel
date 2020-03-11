@@ -13,6 +13,7 @@
     <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/toastr.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
+    
     @stack('css')
 </head>
 <body class="vsc-initialized">
