@@ -27,7 +27,7 @@
                     <td class="cpf">{{$client->cpf}}</td>
                     <td>{{$client->endereco}}</td>
                     <td>
-                        <a class="btn btn-warning btn-sm" href="{{route('client.edit',['id'=>$client->id])}}" role="button"><i class="fas fa-edit"></i> Editar</a>
+                        <a class="btn btn-warning btn-sm" href="" role="button"><i class="fas fa-edit"></i> Editar</a>
                         <a class="btn btn-danger btn-sm" href="{{route('client.create')}}" role="button"><i class="fas fa-trash-alt"></i> Excluir</a>
                     </td>
                 </tr>
