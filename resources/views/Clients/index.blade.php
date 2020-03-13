@@ -1,14 +1,17 @@
 @extends('Layouts.LayoutFull')
 @push('css')
 @endpush
+@if(Session::has('seccess'))
+    toastr["success"]("<b>Sucesso</b>)<br>
+    {{Session::get('sucess')}}";
+@endif
 @section('conteudo')
-<body>
-    <a class="btn btn-success" href="client/create" role="button" style="margin:10px;float:right">Adicionar</a>
+    <a class="btn btn-success" href="{{route('client.create')}}" role="button" style="margin:10px;float:right"><i class="fas fa-plus-circle"></i> Adicionar</a>
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
+            <th scope="col">Nome</th>
             <th scope="col">Email</th>
             <th scope="col">CPF</th>
             <th scope="col">Endereço</th>
@@ -18,20 +21,20 @@
         <tbody>
             @foreach($clients as $client)
                 <tr>
-                    <th scope="row">{{$client->id}}</th>
+                    <td scope="row">{{$client->id}}</th>
                     <td>{{$client->name}}</td>
                     <td>{{$client->email}}</td>
                     <td class="cpf">{{$client->cpf}}</td>
                     <td>{{$client->endereco}}</td>
                     <td>
-                        <a class="btn btn-warning btn-sm" href="client/create" role="button" style="margin:10px;float:right">Editar</a>
-                        <a class="btn btn-danger btn-sm" href="client/create" role="button" style="margin:10px;float:right">Excluir</a>
+                        <a class="btn btn-warning btn-sm" href="{{route('client.edit',['id'=>$client->id])}}" role="button"><i class="fas fa-edit"></i> Editar</a>
+                        <a class="btn btn-danger btn-sm" href="{{route('client.create')}}" role="button"><i class="fas fa-trash-alt"></i> Excluir</a>
                     </td>
                 </tr>
             @endforeach        
         </tbody>
       </table>
-</body>
+
 @endsection
 
 @push('scripts')

@@ -23,7 +23,7 @@
             <span class="fas fa-bars"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand p-0" href="http://senaicurso.com.br">
+        <a class="navbar-brand p-0" href="./">
             <img src="{{ asset('/img/brand/logo_perfectpay_h30.png') }}" alt='PerfectPay'>
         </a>
         <!-- Collapse -->
@@ -45,8 +45,15 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://senaicurso.com.br">
+                    <a class="nav-link" href="./">
                         <i class="nav-icon fa fa-th-large text-gray"></i> Painel
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('client.index')}}">
+                        <i class="nav-icon fa fa-user text-green"></i> Clientes
                     </a>
                 </li>
             </ul>
