@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label>Email:</label>
-                <input id="email" class="form-control" name="email" type="text" placeholder="Digite seu email" value="{{old("email")}}" required/> 
+                <input id="email" class="form-control" name="email" type="email" placeholder="Digite seu email" value="{{old("email")}}" required/> 
             </div>
             <div class="form-group">
                 <label>CPF:</label>
@@ -35,7 +35,7 @@
                 <input id="endereco" class="form-control" name="endereco" type="text" placeholder="Digite seu endereço" value="{{old("endereco")}}"/>
             </div>
             <div class="form-group">
-                {{-- Se o for check, utilizar if(old) then check else vazio --}}
+                
                 <label>Ativo:</label>
                 <input id="active_flag" name="active_flag" type="checkbox"/>
             </div>
