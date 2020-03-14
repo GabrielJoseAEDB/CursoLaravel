@@ -15,35 +15,38 @@
     </div>
 @endif
     <div class="container">
-        <h1>Cadastro de Cliente</h1>
-        <form method="post" action="{{ route('client.store') }}" class="form-horizontal form-validate">
+        <h1>Edição de Cliente</h1>
+        <form method="POST" action="{{ route('client.update',[ $client->id]) }}" class="form-horizontal form-validate">
             {{csrf_field()}}
+            @method('PUT')
             <div class="form-group">
                 <label>Nome:</label>
-            <input id="name" class="form-control" name="name" type="text" placeholder="Digite seu nome" value="{{old("name")}}" required>
+            <input id="name" class="form-control" name="name" type="text" placeholder="Digite seu nome" value="{{old("name","$client->name")}}" required>
             </div>
             <div class="form-group">
                 <label>Email:</label>
-                <input id="email" class="form-control" name="email" type="text" placeholder="Digite seu email" value="{{old("email")}}" required/> 
+                <input id="email" class="form-control" name="email" type="text" placeholder="Digite seu email" value="{{old("email","$client->email")}}" required/> 
             </div>
             <div class="form-group">
                 <label>CPF:</label>
-                <input id="cpf" class="form-control" name="cpf" type="text" placeholder="Digite seu CPF" value="{{old("cpf")}}" required/>
+                <input id="cpf" class="form-control" name="cpf" type="text" placeholder="Digite seu CPF" value="{{old("cpf","$client->cpf")}}" required/>
             </div>
             <div class="form-group">
                 <label>Endereço:</label>
-                <input id="endereco" class="form-control" name="endereco" type="text" placeholder="Digite seu endereço" value="{{old("endereco")}}"/>
+                <input id="endereco" class="form-control" name="endereco" type="text" placeholder="Digite seu endereço" value="{{old("endereco","$client->endereco")}}"/>
             </div>
-            <div class="form-group">
+            <div class="box">
                 {{-- Se o for check, utilizar if(old) then check else vazio --}}
                 <label>Ativo:</label>
-                <input id="active_flag" name="active_flag" type="checkbox"/>
+                <input id="active_flag" name="active_flag" type="checkbox" 
+                    @if($client->active_flag) checked='checked' @endif
+                />
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-success" style="float:right"><i class="fas fa-check-circle"></i> Cadastrar</button>
+                <button type="submit" class="btn btn-success" style="float:right"><i class="fas fa-check-circle"></i> Salvar</button>
             </div>
         </form>
-        <a class="btn btn-primary btn-sm" href="./" role="button"><i class="fas fa-arrow-circle-left"></i> Voltar</a>
+    <a class="btn btn-primary btn-sm" href="{{ route('client.index') }}" role="button"><i class="fas fa-arrow-circle-left"></i> Voltar</a>
     </div>
 
 @endsection

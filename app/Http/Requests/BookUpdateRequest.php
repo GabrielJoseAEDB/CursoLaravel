@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientStoreRequest extends FormRequest
+class BookUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class ClientStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'cpf' => 'required|min:14|unique:clients',
             'name' => 'required',
-            'email' => 'required'
+            'writer' => 'required'
         ];
     }
 }

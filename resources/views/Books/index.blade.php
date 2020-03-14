@@ -7,35 +7,27 @@
     </div>
     @endif -->
 @section('conteudo')
-<a class="btn btn-success" href="{{route('client.create')}}" role="button" style="margin:10px;float:right"><i class="fas fa-plus-circle"></i> Adicionar</a>
+<a class="btn btn-success" href="{{route('book.create')}}" role="button" style="margin:10px;float:right"><i class="fas fa-plus-circle"></i> Adicionar</a>
 <table class="table table-striped table-hover">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">CPF</th>
-            <th scope="col">Endereço</th>
+            <th scope="col">Escritor</th>
+            <th scope="col">Qtd.Pag.</th>
             <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($clients as $client)
+        @foreach($books as $book)
         <tr>
-            <td scope="row">{{$client->id}}</th>
-            <td>{{$client->name}}</td>
-            <td>{{$client->email}}</td>
-            <td class="cpf">{{$client->cpf}}</td>
-            <td>{{$client->endereco}}</td>
+            <td scope="row">{{$book->id}}</th>
+            <td>{{$book->name}}</td>
+            <td>{{$book->writer}}</td>
+            <td>{{$book->page_number}}</td>
             <td>
-                <a class="btn btn-warning btn-sm" href="{{ route('client.edit',[$client->id]) }}" role="button"><i class="fas fa-edit"></i> Editar</a>
-                <!-- <span data-url="{{ route('client.destroy',[$client->id]) }}" data-idClient='{{$client->id}}'>
-                    <span class="btn btn-danger btn-sm text-white deleteButton">
-                        <i class="fas fa-trash-alt"></i>
-                        <span class="d-nome d-md inline"> Deletar</span>
-                    </span>
-                </span> -->
-                <span data-url="{{ route('client.destroy',[ $client->id]) }}" data-idClient='{{ $client->id}}' class="btn btn-danger btn-sm text-white deleteButton">
+                <a class="btn btn-warning btn-sm" href="{{ route('book.edit',[$book->id]) }}" role="button"><i class="fas fa-edit"></i> Editar</a>
+                <span data-url="{{ route('book.destroy',[ $book->id]) }}" data-idBook='{{ $book->id}}' class="btn btn-danger btn-sm text-white deleteButton">
                     <i class="fal fa-trash"></i>
                     <span class='d-none d-md-inline'> Deletar</span>
                 </span>
@@ -55,8 +47,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
 <script>
-    $(".cpf").mask('000.000.000-00');
-
     $('.deleteButton').on('click', function (e) { 
         result = confirm('Tem certeza?');
         
@@ -64,7 +54,7 @@
             return;
         }
         var url = $(this).data('url');
-        var idClient = $(this).data('idClient');
+        var idBook = $(this).data('idBook');
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
             method: 'DELETE',
@@ -72,7 +62,7 @@
         });
         $.ajax({
             data: {
-                'idClient': idClient,
+                'idBook': idBook,
             },
             success: function (data) {
                 console.log(data);
