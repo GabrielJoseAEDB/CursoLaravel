@@ -19,3 +19,5 @@ Route::get('/teste', 'TesteController@index');
 Route::resource('/client', 'Clients\ClientController');
 
 Route::resource('/book', 'Books\BookController');
+
+Route::resource('/emprestimo', 'Emprestimos\EmprestimoController');

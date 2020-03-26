@@ -9,4 +9,7 @@ class Book extends Model
     protected $fillable = [
         'name', 'writer', 'page_number', 
     ];
+    public function emprestado(){
+        return $this->belongsTo('App\Models\Emprestimo');
+    }
 }
